@@ -1,5 +1,7 @@
 #include "monty.h"
 
+#define MAX_LINE_LENGTH 1024
+
 /**
  * main - Entry point of the program
  * @argc: Number of command-line arguments
@@ -11,8 +13,7 @@ int main(int argc, char *argv[])
 {
 	stack_t *stack = NULL;
 	unsigned int line_number = 0;
-	char *line = NULL, *op = NULL;
-	size_t n = 0;
+	char line[MAX_LINE_LENGTH], *op = NULL;
 	FILE *file;
 
 
@@ -27,7 +28,7 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	while (getline(&line, &n, file) != -1)
+	while (fgets(line, sizeof(line), file) != NULL)
 	{
 		line_number++;
 		op = strtok(line, "\n\t\r ");

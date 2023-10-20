@@ -35,7 +35,6 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-int getline(char **lineptr, size_t *n, FILE *stream);
 void exec_op(char *op, stack_t **stack, unsigned int line_number);
 stack_t *add_snodeint(stack_t **head, const int n);
 int is_all_digit(char *arg);
